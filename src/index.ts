@@ -5,9 +5,19 @@ import { getQueries, getMutations } from './load'
 import { ApolloServer, gql } from 'apollo-server-koa'
 import { setRegistry } from './helpers/registry'
 import { Graphql } from './plugin'
+import raw from 'raw-body'
+import * as inflate from 'inflation'
 
 export default class GraphQLPlugin {
   public async onAfterInitRouter({ app, config, registry }) {
+    app.use(async (ctx, next) => {
+      if (ctx.request.url === '/graphql' ) {
+        const str = await raw(inflate(ctx.req), { encoding: 'utf8' });
+        ctx.request.body = { query: str };
+      }
+      await next();
+    });
+
     registry.set('graphql', new Graphql(registry))
     setRegistry(registry)
     const test = fs.readFileSync(config.graphql.schema)
