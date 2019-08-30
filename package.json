@@ -1,6 +1,6 @@
 {
   "name": "@rapin/graphql",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Rapin Graphql",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
@@ -21,9 +21,7 @@
     "@types/node": "^12.6.8",
     "apollo-server-koa": "^2.8.1",
     "graphql": "^14.4.2",
-    "inflation": "^2.0.0",
     "lodash": "^4.17.15",
-    "raw-body": "^2.4.1",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
