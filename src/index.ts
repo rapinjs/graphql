@@ -6,7 +6,7 @@ import { ApolloServer, gql } from 'apollo-server-koa'
 import { setRegistry } from './helpers/registry'
 import { Graphql } from './plugin'
 import raw from 'raw-body'
-import * as inflate from 'inflation'
+import inflate from 'inflation'
 
 export default class GraphQLPlugin {
   public async onAfterInitRouter({ app, config, registry }) {
