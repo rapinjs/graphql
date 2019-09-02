@@ -5,8 +5,8 @@ export class Graphql {
   }
 
   public loadResolver(path, args) {
-    return (root, argsResolver) => {
-      return this.registry.get('load').controller(path, { ...args, root, args: argsResolver })
+    return (argsResolver) => {
+      return this.registry.get('load').controller(path, { ...args, args: argsResolver })
     }
   }
 }
