@@ -18,7 +18,7 @@
     "dev": "rimraf lib && tsc -w -p ."
   },
   "dependencies": {
-    "@types/node": "^12.6.8",
+    "@types/node": "^13.1.8",
     "apollo-server-koa": "^2.8.1",
     "graphql": "^14.4.2",
     "lodash": "^4.17.15",
