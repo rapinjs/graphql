@@ -20,9 +20,9 @@ const resolverAction = async (actionPath, args) => {
   return output
 }
 
-export const Query = path => {
+export const Query = (path?: string) => {
   return (target, propertyKey: string, descriptor: PropertyDescriptor) => {
-    setQuery(path, async (root, args) => {
+    setQuery(path ? path: propertyKey, async (root, args) => {
       const actionPath = getPath(target) + '/' + propertyKey
 
       return resolverAction(actionPath, args)

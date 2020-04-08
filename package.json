@@ -1,6 +1,6 @@
 {
   "name": "@rapin/graphql",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Rapin Graphql",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
@@ -18,16 +18,16 @@
     "dev": "rimraf lib && tsc -w -p ."
   },
   "dependencies": {
-    "@types/node": "^13.5.2",
-    "apollo-server-koa": "^2.8.1",
-    "graphql": "^14.4.2",
+    "@types/node": "^13.11.0",
+    "apollo-server-koa": "^2.12.0",
+    "graphql": "^15.0.0",
     "lodash": "^4.17.15",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@types/graphql": "^14.2.3",
-    "rimraf": "^3.0.1",
-    "tslint": "^6.0.0",
-    "typescript": "^3.5.3"
+    "@types/graphql": "^14.5.0",
+    "rimraf": "^3.0.2",
+    "tslint": "^6.1.1",
+    "typescript": "^3.8.3"
   }
 }

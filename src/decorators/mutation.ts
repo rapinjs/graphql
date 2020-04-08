@@ -19,9 +19,9 @@ const resolverAction = async (actionPath, args) => {
   return output
 }
 
-export const Mutation = path => {
+export const Mutation = (path?: string) => {
   return (target, propertyKey: string, descriptor: PropertyDescriptor) => {
-    setMutation(path, async (root, args) => {
+    setMutation(path ? path : propertyKey, async (root, args) => {
       const actionPath = getPath(target) + '/' + propertyKey
 
       getRegistry().get('request').post = {
