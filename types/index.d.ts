@@ -1,10 +1,10 @@
-export declare const Query: (path: string) => (
+export declare const Query: (path?: string) => (
   target: any,
   propertyKey: string,
   descriptor: PropertyDescriptor,
 ) => void
 
-export declare const Mutation: (path: string) => (
+export declare const Mutation: (path?: string) => (
   target: any,
   propertyKey: string,
   descriptor: PropertyDescriptor,
