@@ -1,31 +1,30 @@
 import { setQuery } from '../load'
 import { getPath } from '../helpers/path'
-import { getRegistry } from '../helpers/registry'
 import { setError } from '../types/errors'
 
-const resolverAction = async (actionPath, args) => {
+const resolverAction = async (actionPath, args, ctx) => {
   let output = {}
-  output = await getRegistry()
+  output = await ctx.registry
     .get('load')
     .controller(actionPath, args)
 
-  const error = getRegistry()
-    .get('error')
-    .get()
-  if (error) {
-    setError('MISSING', error, 400)
-    throw new Error('MISSING')
-  }
+    const error = ctx.registry
+      .get('error')
+      .get()
+    if (error) {
+      setError('MISSING', error, 400)
+      throw new Error(error.message)
+    }
 
   return output
 }
 
 export const Query = (path?: string) => {
   return (target, propertyKey: string, descriptor: PropertyDescriptor) => {
-    setQuery(path ? path: propertyKey, async (root, args) => {
+    setQuery(path ? path: propertyKey, async (root, args, ctx, info) => {
       const actionPath = getPath(target) + '/' + propertyKey
 
-      return resolverAction(actionPath, args)
+      return resolverAction(actionPath, args, ctx)
     })
   }
 }

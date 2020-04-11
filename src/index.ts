@@ -3,16 +3,17 @@ import fs from 'fs'
 export * from './decorators'
 import { getQueries, getMutations } from './load'
 import { ApolloServer, gql } from 'apollo-server-koa'
-import { setRegistry } from './helpers/registry'
 import { Graphql } from './plugin'
+import { isDev } from 'rapin'
 
 export default class GraphQLPlugin {
   public async onAfterInitRouter({ app, config, registry }) {
     registry.set('graphql', new Graphql(registry))
-    setRegistry(registry)
     const test = fs.readFileSync(config.graphql.schema)
     const server = new ApolloServer({
       typeDefs: gql(test.toString()),
+      playground: isDev,
+      context: ({ ctx }) => ctx,
       resolvers: {
         Query: getQueries(),
         Mutation: getMutations(),

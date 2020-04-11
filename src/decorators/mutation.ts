@@ -1,14 +1,14 @@
 import { setMutation } from '../load'
-import { getRegistry, getPath } from '../helpers'
+import { getPath } from '../helpers'
 import { setError } from '../types/errors'
 
-const resolverAction = async (actionPath, args) => {
+const resolverAction = async (actionPath, args, ctx) => {
   let output = {}
-  output = await getRegistry()
+  output = await ctx.registry
     .get('load')
     .controller(actionPath, args)
 
-  const error = getRegistry()
+  const error = ctx.registry
     .get('error')
     .get()
   if (error) {
@@ -21,15 +21,15 @@ const resolverAction = async (actionPath, args) => {
 
 export const Mutation = (path?: string) => {
   return (target, propertyKey: string, descriptor: PropertyDescriptor) => {
-    setMutation(path ? path : propertyKey, async (root, args) => {
+    setMutation(path ? path : propertyKey, async (root, args, ctx, info) => {
       const actionPath = getPath(target) + '/' + propertyKey
 
-      getRegistry().get('request').post = {
+      ctx.registry.get('request').post = {
         ...args,
-        ...getRegistry().get('request').post,
+        ...ctx.registry.get('request').post,
       }
 
-      return resolverAction(actionPath, args)
+      return resolverAction(actionPath, args, ctx)
     })
   }
 }
