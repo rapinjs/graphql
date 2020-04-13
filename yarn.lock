@@ -4608,9 +4608,9 @@ qs@~6.5.2:
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 rapin@^0.1.45:
-  version "0.1.45"
-  resolved "https://registry.yarnpkg.com/rapin/-/rapin-0.1.45.tgz#d7a806f52d62917ac8063a5f37841160ce17778c"
-  integrity sha512-VkJWvcpsoHDQisFjaXUnAQZDHzH4uikPybA0kMB6k/6pujE+5QRHh+KeIBGUNWz9IWocSFeL5Lm7NP9OmtI6eg==
+  version "0.1.47"
+  resolved "https://registry.yarnpkg.com/rapin/-/rapin-0.1.47.tgz#9910ec22bc152ae8370dd555c5cd57e927c3f21e"
+  integrity sha512-ptg35+eb5D/py4kg7vtDF7KJD6Xp1P5Y18tgTaVzQJRShxuoXOcPvs43MdTEou7wIfqOio0ExETas5vP21xFjA==
   dependencies:
     axios "^0.19.2"
     colors "^1.4.0"
