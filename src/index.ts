@@ -5,6 +5,9 @@ import { getQueries, getMutations } from './load'
 import { ApolloServer, gql } from 'apollo-server-koa'
 import { Graphql } from './plugin'
 import { isDev } from 'rapin'
+import { codegen } from '@graphql-codegen/core';
+import { buildSchema, GraphQLSchema, printSchema, parse } from 'graphql';
+import * as typescriptPlugin from '@graphql-codegen/typescript';
 
 export default class GraphQLPlugin {
   public async onAfterInitRouter({ app, config, registry }) {
@@ -35,6 +38,27 @@ export default class GraphQLPlugin {
         }
       },
     })
+
+    if (config.graphql.generator) {
+      const schema: GraphQLSchema = buildSchema(test.toString());
+      const outputFile: string = config.graphql.generatorOutput || 'types/graphql.ts';
+      const configGenerator = {
+          filename: outputFile,
+          schema: parse(printSchema(schema)), 
+          plugins: [
+            {
+              typescript: {},
+            },
+          ],
+          pluginMap: {
+            typescript: typescriptPlugin,
+          },
+          documents: [],
+          config: {}
+      }
+      const output = await codegen(configGenerator)
+      fs.writeFileSync(outputFile, output);
+    }
 
     server.applyMiddleware({ app })
   }
