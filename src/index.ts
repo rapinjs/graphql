@@ -8,6 +8,7 @@ import { isDev } from 'rapin'
 import { codegen } from '@graphql-codegen/core';
 import { buildSchema, GraphQLSchema, printSchema, parse } from 'graphql';
 import * as typescriptPlugin from '@graphql-codegen/typescript';
+import {pluginEvent} from 'rapin/lib/helper/plugin'
 
 export default class GraphQLPlugin {
   public async onAfterInitRouter({ app, config, registry }) {
@@ -22,6 +23,13 @@ export default class GraphQLPlugin {
         Mutation: getMutations(),
       },
       formatError(err) {
+        pluginEvent('onError', {
+          app,
+          err,
+          ctx: null,
+          registry,
+          config
+        })
         const isCustomMessage = hasError(err.message)
         return {
           message: isCustomMessage
