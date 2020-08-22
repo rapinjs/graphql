@@ -12,8 +12,10 @@ import * as typescriptPlugin from '@graphql-codegen/typescript';
 import {pluginEvent} from 'rapin/lib/helper/plugin'
 
 export default class GraphQLPlugin {
+  public async onBeforeRequest({ registry, ctx }) {
+    ctx.registry.set('graphql', new Graphql(ctx.registry))
+  }
   public async onAfterInitRouter({ app, config, registry }) {
-    registry.set('graphql', new Graphql(registry))
     const test = fs.readFileSync(config.graphql.schema)
     let context = null
     const server = new ApolloServer({
