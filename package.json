@@ -1,6 +1,6 @@
 {
   "name": "@rapin/graphql",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Rapin Graphql",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
@@ -15,7 +15,8 @@
   "scripts": {
     "tslint": "tslint {src}/**/*.ts --fix",
     "build": "rimraf lib && tsc -p .",
-    "dev": "rimraf lib && tsc -w -p ."
+    "dev": "rimraf lib && tsc -w -p .",
+    "yalc-watch": "nodemon -e vue,js,scss,json -x yalc push"
   },
   "dependencies": {
     "@graphql-codegen/core": "^1.15.3",
@@ -29,8 +30,10 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
+    "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "yalc": "^1.0.0-pre.42"
   }
 }
