@@ -24,10 +24,10 @@ export const Mutation = (path?: string) => {
     setMutation(path ? path : propertyKey, async (root, args, ctx, info) => {
       const actionPath = getPath(target) + '/' + propertyKey
 
-      ctx.registry.get('request').post = {
-        ...args,
-        ...ctx.registry.get('request').post,
-      }
+      // ctx.registry.get('request').post = {
+      //   ...args,
+      //   ...ctx.registry.get('request').post,
+      // }
 
       return resolverAction(actionPath, args, ctx)
     })
