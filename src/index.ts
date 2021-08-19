@@ -48,7 +48,7 @@ export default class GraphQLPlugin {
   }
   public async onAfterInitRouter({ app, config, registry }) {
     const test = fs.readFileSync(config.graphql.schema)
-    app.use(graphqlUploadKoa)
+    app.use(graphqlUploadKoa())
     let context = null
     const server = new ApolloServer({
       typeDefs: gql(test.toString()),
