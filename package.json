@@ -1,6 +1,6 @@
 {
   "name": "@rapin/graphql",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Rapin Graphql",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
@@ -19,21 +19,20 @@
     "yalc-watch": "nodemon -e vue,js,scss,json -x yalc push"
   },
   "dependencies": {
-    "@graphql-codegen/core": "^1.17.8",
-    "@graphql-codegen/typescript": "^1.17.11",
+    "@graphql-codegen/core": "^2.0.0",
+    "@graphql-codegen/typescript": "^2.0.0",
     "@types/graphql": "^14.5.0",
-    "@types/node": "^14.14.7",
-    "apollo-server-koa": "^2.19.0",
-    "graphql": "^15.4.0",
-    "lodash": "^4.17.20",
-    "rapin": "^0.1.55",
+    "@types/node": "^16.6.2",
+    "apollo-server-koa": "^3.1.2",
+    "graphql": "^15.5.1",
+    "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6",
+    "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
-    "tslint": "^6.1.2",
-    "typescript": "^4.0.5",
-    "yalc": "^1.0.0-pre.45"
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.5",
+    "yalc": "^1.0.0-pre.53"
   }
 }
