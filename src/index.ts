@@ -87,6 +87,8 @@ export default class GraphQLPlugin {
       },
     })
 
+    await server.start();
+
     server.applyMiddleware({ app })
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@rapin/graphql",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Rapin Graphql",
   "main": "lib/index.js",
   "typings": "types/index.d.ts",
